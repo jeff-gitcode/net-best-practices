@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json-source-generator", "js
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coravel-demo", "coravel-demo\coravel-demo.csproj", "{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restsharp-demo", "restsharp-demo\restsharp-demo.csproj", "{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
