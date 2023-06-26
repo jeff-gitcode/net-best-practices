@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json-source-generator", "json-source-generator\json-source-generator.csproj", "{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coravel-demo", "coravel-demo\coravel-demo.csproj", "{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
