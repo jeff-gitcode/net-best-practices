@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.ConfigureServices();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -24,9 +25,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+
 app.MapGet("/todo", async () =>
 {
-    var client = new RestService();
+    using var scope = app.Services.CreateScope();
+    var service = scope.ServiceProvider;
+    var client = service.GetRequiredService<IRestService>();
     var request = new RestRequest("todos/1");
     var response = await client.Get<ToDo>(request);
     return Results.Ok(response);
