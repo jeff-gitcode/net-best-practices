@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coravel-demo", "coravel-dem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restsharp-demo", "restsharp-demo\restsharp-demo.csproj", "{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quic-demo", "quic-demo", "{08B025E5-3E68-4D07-B7CB-F94602127453}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-server", "quic-demo\quic-server\quic-server.csproj", "{296DEAFE-9657-48BA-BC8E-47E6CE647960}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-client", "quic-demo\quic-client\quic-client.csproj", "{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +36,17 @@ Global
 		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{296DEAFE-9657-48BA-BC8E-47E6CE647960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{296DEAFE-9657-48BA-BC8E-47E6CE647960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{296DEAFE-9657-48BA-BC8E-47E6CE647960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{296DEAFE-9657-48BA-BC8E-47E6CE647960}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{296DEAFE-9657-48BA-BC8E-47E6CE647960} = {08B025E5-3E68-4D07-B7CB-F94602127453}
+		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2} = {08B025E5-3E68-4D07-B7CB-F94602127453}
 	EndGlobalSection
 EndGlobal
