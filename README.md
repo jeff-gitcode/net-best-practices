@@ -7,7 +7,7 @@
 - [x] Coravel
 - [x] RestSharp
 - [x] QUIC(HTTP3)
--
+- [x] Design Pattern
 
 ![alt text](./doc/coravel.jpg)
 
@@ -44,5 +44,8 @@ $ dotnet sln add .\quic-demo\quic-server\
 $ dotnet sln add .\quic-demo\quic-client\
 
 $ dotnet run
+
+# design pattern
+$ dotnet new console -o strategy-demo
 
 ```
