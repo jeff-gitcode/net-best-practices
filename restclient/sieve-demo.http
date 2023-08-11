@@ -1,0 +1,9 @@
+### WeatherForecast
+
+GET  http://localhost:5097/WeatherForecast HTTP/1.1
+content-type: application/json
+accept: text/plain
+
+### products
+GET http://localhost:5097/Products?Sorts=Price HTTP/1.1
+content-type: application/json

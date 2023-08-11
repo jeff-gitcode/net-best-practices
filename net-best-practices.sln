@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-server", "quic-demo\qu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-client", "quic-demo\quic-client\quic-client.csproj", "{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sieve-demo", "sieve-demo\sieve-demo.csproj", "{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{296DEAFE-9657-48BA-BC8E-47E6CE647960} = {08B025E5-3E68-4D07-B7CB-F94602127453}

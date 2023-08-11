@@ -32,3 +32,9 @@ finally
 {
     Log.CloseAndFlush();
 }
+
+// Generate a method with date format 04/11/2019 03:18:22 am
+
+
+
+
