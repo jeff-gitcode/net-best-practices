@@ -105,3 +105,11 @@ $ dotnet add .\sieve-demo\ package Sieve
 $ dotnet build
 $ dotnet run --project .\sieve-demo\sieve-demo.csproj
 ```
+
+## Minimal Webhook
+
+```c#
+$ dotnet new cleanminimalapi -o minimal-webhook-demo
+# cd minimal-webhook-demo
+$ dotnet run --project ./src/Presentation
+```

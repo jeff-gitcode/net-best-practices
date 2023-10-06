@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Stephen Walsh",
+  "classifications": [
+    "Clean Architecture",
+    "Clean",
+    "Minimal API",
+    "Minimal",
+    "API",
+    "Dotnet",
+    "Docker"
+  ],
+  "identity": "minimal_webhook_demo.Template",
+  "name": "Clean Minimal API Template",
+  "shortName": "minimal_webhook_demo",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "sourceName": "minimal_webhook_demo",
+  "preferNameDirectory": true,
+  "symbols": {
+    "author": {
+      "type": "parameter",
+      "displayName": "The name of the author of the solution.",
+      "defaultValue": "Stephen Walsh",
+      "replaces": "Stephen Walsh"
+    }
+  }
+}
