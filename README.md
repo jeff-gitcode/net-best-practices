@@ -116,6 +116,13 @@ $ dotnet run --project ./src/Presentation
 
 ## Caching
 
+### Tech Stack
+
+- [x] Caching
+- [x] GenFu
+- [x] Yarp
+- [x] NBomber
+
 ```c#
 
 $ dotnet new cleanminimalapi -o minimal-caching-demo
