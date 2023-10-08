@@ -129,4 +129,8 @@ $ dotnet new cleanminimalapi -o minimal-caching-demo
 # cd minimal-caching-demo
 $ dotnet run --project ./src/Presentation
 $ dotnet add ./src/Infrastructure package GenFu
+# cd src
+$ dotnet new webapi -o YarpApi
+$ dotnet sln add YarpApi
+$ dotnet add ./src/YarpApi package Yarp.ReverseProxy
 ```
