@@ -113,3 +113,12 @@ $ dotnet new cleanminimalapi -o minimal-webhook-demo
 # cd minimal-webhook-demo
 $ dotnet run --project ./src/Presentation
 ```
+
+## Caching
+
+```c#
+
+$ dotnet new cleanminimalapi -o minimal-caching-demo
+# cd minimal-caching-demo
+$ dotnet run --project ./src/Presentation
+```
