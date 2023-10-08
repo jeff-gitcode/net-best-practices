@@ -9,5 +9,5 @@ public class DataEntity
 public interface IDataRepository
 {
     Task<IList<DataEntity>> SearchEntities(string name);
-Task Add(string name);
+    Task Add(string name);
 }
