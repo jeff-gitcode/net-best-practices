@@ -121,4 +121,5 @@ $ dotnet run --project ./src/Presentation
 $ dotnet new cleanminimalapi -o minimal-caching-demo
 # cd minimal-caching-demo
 $ dotnet run --project ./src/Presentation
+$ dotnet add ./src/Infrastructure package GenFu
 ```

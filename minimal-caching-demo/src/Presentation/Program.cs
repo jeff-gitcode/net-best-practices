@@ -1,4 +1,5 @@
 using minimal_caching_demo.Presentation.Endpoints.Authors;
+using minimal_caching_demo.Presentation.Endpoints.Caching;
 using minimal_caching_demo.Presentation.Endpoints.Movies;
 using minimal_caching_demo.Presentation.Endpoints.Reviews;
 using minimal_caching_demo.Presentation.Endpoints.Version;
@@ -16,6 +17,7 @@ _ = app.MapVersionEndpoints();
 _ = app.MapAuthorEndpoints();
 _ = app.MapMovieEndpoints();
 _ = app.MapReviewEndpoints();
+_ = app.MapCachingEndpoints();
 
 try
 {

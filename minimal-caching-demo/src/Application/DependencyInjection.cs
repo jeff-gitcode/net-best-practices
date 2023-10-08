@@ -6,12 +6,15 @@ using Common.Behaviours;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using minimal_caching_demo.Application.Caching;
 
 [ExcludeFromCodeCoverage]
 public static class DependencyInjection
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
     {
+        _ = services.AddScoped<IDataService, DataService>();
+
         _ = services.AddMediatR(Assembly.GetExecutingAssembly());
         _ = services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly(), ServiceLifetime.Transient);
 

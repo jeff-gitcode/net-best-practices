@@ -5,9 +5,3 @@ public class DataEntity
     public string LastName { get; set; }
     public int Age { get; set; }
 }
-
-public interface IDataRepository
-{
-    Task<IList<DataEntity>> SearchEntities(string name);
-    Task Add(string name);
-}

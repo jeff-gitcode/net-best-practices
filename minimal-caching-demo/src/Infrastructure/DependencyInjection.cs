@@ -7,6 +7,8 @@ using Application.Reviews;
 using Databases.MoviesReviews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using minimal_caching_demo.Application.Caching;
+using minimal_caching_demo.Infrastructure.Caching;
 using SimpleDateTimeProvider;
 
 [ExcludeFromCodeCoverage]
@@ -24,6 +26,7 @@ public static class DependencyInjection
         _ = services.AddSingleton<IAuthorsRepository>(p => p.GetRequiredService<EntityFrameworkMovieReviewsRepository>());
         _ = services.AddSingleton<IMoviesRepository>(x => x.GetRequiredService<EntityFrameworkMovieReviewsRepository>());
         _ = services.AddSingleton<IReviewsRepository>(x => x.GetRequiredService<EntityFrameworkMovieReviewsRepository>());
+        _ = services.AddSingleton<IDataRepository, DataRepository>();
 
         _ = services.AddSingleton<IDateTimeProvider, SystemDateTimeProvider>();
 
