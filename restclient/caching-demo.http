@@ -1,0 +1,9 @@
+### api search
+GET  http://localhost:5066/search?name=test HTTP/1.1
+content-type: application/json
+accept: text/plain
+
+### yarp search
+GET  http://localhost:8002/search?name=test HTTP/1.1
+content-type: application/json
+accept: text/plain

@@ -122,9 +122,12 @@ $ dotnet run --project ./src/Presentation
 - [x] GenFu
 - [x] Yarp
 - [x] NBomber
+- ![alt text](./doc/nbomber-demo.PNG)
+- ![alt text](./doc/nbomber-demo2.PNG)
 
 ```c#
 
+# [TODO]
 $ dotnet new cleanminimalapi -o minimal-caching-demo
 # cd minimal-caching-demo
 $ dotnet run --project ./src/Presentation
@@ -133,4 +136,52 @@ $ dotnet add ./src/Infrastructure package GenFu
 $ dotnet new webapi -o YarpApi
 $ dotnet sln add YarpApi
 $ dotnet add ./src/YarpApi package Yarp.ReverseProxy
+
+# basic
+$ dotnet new sln -o caching
+# cd caching
+$ dotnet new webapi -o WebApi
+$ dotnet add .\WebApi package GenFu
+$ dotnet run --project .\WebApi\
+
+# YARP
+$ dotnet new webapi -o YarpApi
+$ dotnet add ./YarpApi package Yarp.ReverseProxy
+
+# load test
+$ dotnet new console -n NBomberTest
+$ dotnet add .\NBomberTest package NBomber
+$ dotnet add .\NBomberTest\ package NBomber.http
+$ dotnet add .\NBomberTest package GenFu
+$ dotnet add .\NBomberTest\ reference .\YarpApi\
+
+$ dotnet sln add (ls -r **//*.csproj)
+$ dotnet build
+
+# docker
+$ docker build . -t api -f .\WebApi\Dockerfile
+$ docker build . -t yarp -f .\YarpApi\Dockerfile.YARP
+$ docker image list
+$ docker rmi Image api
+
+# docker compose
+$ docker-compose up
+$ docker-compose down
+
+# execute NBomberTest
+
+# Add cache to webapi
+$ dotnet add .\WebApi package NRedisStack
+$ dotnet add .\WebApi package Microsoft.Extensions.Caching.Memory
+$ dotnet add .\WebApi package Scrutor
+
+# add redis conf
+$ docker build . -t myredis -f .\Dockerfile.redis
+$ docker start myredis
+$ docker stop myredis
+
+# restart docker
+$ docker compose down
+$ docker build . -t api -f .\WebApi\Dockerfile
+$ docker compose up
 ```
