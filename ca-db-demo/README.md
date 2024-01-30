@@ -36,6 +36,8 @@ $ dotnet add .\Application\ package Microsoft.Extensions.DependencyInjection
 $ dotnet add .\Infrastructure\ package Microsoft.Extensions.DependencyInjection
 $ dotnet add .\Presentation\ package Microsoft.Extensions.DependencyInjection
 $ dotnet add .\Domain\ package Microsoft.Extensions.DependencyInjection
+$ dotnet add .\WebApi\ package Swashbuckle.AspNetCore
+$ dotnet add .\Presentation\ package Swashbuckle.AspNetCore
 
 $ dotnet add .\Application\ reference .\Domain\
 $ dotnet add .\Infrastructure\ reference .\Application\
