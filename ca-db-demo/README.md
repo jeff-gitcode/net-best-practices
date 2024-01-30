@@ -32,6 +32,11 @@ $ dotnet build
 
 $ dotnet add .\Application\ package MediatR
 
+$ dotnet add .\Application\ package Microsoft.Extensions.DependencyInjection
+$ dotnet add .\Infrastructure\ package Microsoft.Extensions.DependencyInjection
+$ dotnet add .\Presentation\ package Microsoft.Extensions.DependencyInjection
+$ dotnet add .\Domain\ package Microsoft.Extensions.DependencyInjection
+
 $ dotnet add .\Application\ reference .\Domain\
 $ dotnet add .\Infrastructure\ reference .\Application\
 $ dotnet add .\Presentation\ reference .\Application\
