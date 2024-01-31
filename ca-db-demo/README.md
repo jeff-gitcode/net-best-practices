@@ -43,4 +43,13 @@ $ dotnet add .\Application\ reference .\Domain\
 $ dotnet add .\Infrastructure\ reference .\Application\
 $ dotnet add .\Presentation\ reference .\Application\
 
+$ dotnet add .\Infrastructure\ package Npgsql.EntityFrameworkCore.PostgreSQL
+$ dotnet add .\Infrastructure\ package Microsoft.EntityFrameworkCore.Tools
+$ dotnet add .\Infrastructure\ package Microsoft.EntityFrameworkCore
+$ dotnet add .\Infrastructure\ package Microsoft.EntityFrameworkCore.Design
+
+$ dotnet sdk check
+
+$ dotnet tool install --global dotnet-ef
+$ dotnet ef migrations add InitialMigration
 ```

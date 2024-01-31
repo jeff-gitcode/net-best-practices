@@ -2,8 +2,13 @@ using Application;
 using Infrastructure;
 using Domain;
 using Presentation;
+using Infrastructure.db;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var Configuration = builder.Configuration;
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -15,6 +20,11 @@ builder.Services.AddDomain()
     .AddApplication()
     .AddInfrastructure()
     .AddPresentation();
+
+builder.Services.AddMvc().AddApplicationPart(typeof(CustomerController).GetTypeInfo().Assembly);
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
@@ -48,6 +58,11 @@ app.UseHttpsRedirection();
 // .WithOpenApi();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateAsyncScope())
+{
+    await scope.ServiceProvider.GetService<AppDbContext>()!.Database.EnsureCreatedAsync();
+}
 
 app.Run();
 
