@@ -2,6 +2,7 @@ namespace Infrastructure.db;
 
 using Domain;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 public class AppDbContext : DbContext
 {
@@ -14,10 +15,11 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
         modelBuilder.Entity<Customer>().HasData(
             new Customer
             {
-                Id = 1,
+                Id = Guid.NewGuid().ToString(),
                 Name = "John Doe",
                 Email = "john.doe@test.com",
                 Password = "test",

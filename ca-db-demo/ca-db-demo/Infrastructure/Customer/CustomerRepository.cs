@@ -7,28 +7,29 @@ public class CustomerRepository : IUserRepository
     {
     }
 
-    public Task<Customer> Add(Customer entity)
+    public Task<CustomerModel> Add(CustomerModel entity)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Customer> Delete(int id)
+    public Task<CustomerModel> Delete(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<Customer> Get(int id)
+    public Task<CustomerModel> Get(int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<IEnumerable<Customer>> GetAll()
+    public Task<IEnumerable<CustomerModel>> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public Task<Customer> Update(Customer entity)
+    public Task<CustomerModel> Update(CustomerModel entity)
     {
         throw new NotImplementedException();
     }
+
 }

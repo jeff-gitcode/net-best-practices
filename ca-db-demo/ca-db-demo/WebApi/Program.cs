@@ -61,6 +61,8 @@ app.MapControllers();
 
 using (var scope = app.Services.CreateAsyncScope())
 {
+    // first remove, then create table
+    scope.ServiceProvider.GetService<AppDbContext>()!.Database.EnsureDeleted();
     await scope.ServiceProvider.GetService<AppDbContext>()!.Database.EnsureCreatedAsync();
 }
 

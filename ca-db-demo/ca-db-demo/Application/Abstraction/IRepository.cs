@@ -2,7 +2,7 @@
 
 namespace Application.Abstraction
 {
-    public interface IRepository<T> where T : Customer
+    public interface IRepository<T> where T : CustomerModel
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> Add(T entity);

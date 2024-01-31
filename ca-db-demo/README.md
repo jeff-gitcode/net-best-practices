@@ -55,5 +55,5 @@ $ dotnet add .\Infrastructure\ package Microsoft.EntityFrameworkCore.Design
 $ dotnet sdk check
 
 $ dotnet tool install --global dotnet-ef
-$ dotnet ef migrations add InitialMigration
+
 ```

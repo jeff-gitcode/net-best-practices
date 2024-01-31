@@ -4,9 +4,9 @@ using MediatR;
 
 namespace Application.Users.Commands
 {
-    public record CreateUserCommand(Customer user) : ICommand<Customer> { }
+    public record CreateUserCommand(CustomerModel user) : ICommand<CustomerModel> { }
 
-    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, Customer>
+    public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, CustomerModel>
     {
         private readonly IUserRepository _repository;
         private readonly IPublisher _publisher;
@@ -17,7 +17,7 @@ namespace Application.Users.Commands
             _publisher = publisher;
         }
 
-        public async Task<Customer> Handle(
+        public async Task<CustomerModel> Handle(
             CreateUserCommand request,
             CancellationToken cancellationToken
         )

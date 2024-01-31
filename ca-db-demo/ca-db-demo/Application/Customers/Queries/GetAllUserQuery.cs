@@ -4,9 +4,9 @@ using MediatR;
 
 namespace Application.Users.Queries
 {
-    public class GetAllUserQuery : IQuery<IEnumerable<Customer>> { }
+    public class GetAllUserQuery : IQuery<IEnumerable<CustomerModel>> { }
 
-    public class GetAllUserQueryHandler : IQueryHandler<GetAllUserQuery, IEnumerable<Customer>>
+    public class GetAllUserQueryHandler : IQueryHandler<GetAllUserQuery, IEnumerable<CustomerModel>>
     {
         private readonly IUserRepository _repository;
         private readonly IPublisher _publisher;
@@ -17,7 +17,7 @@ namespace Application.Users.Queries
             _publisher = publisher;
         }
 
-        public async Task<IEnumerable<Customer>> Handle(
+        public async Task<IEnumerable<CustomerModel>> Handle(
             GetAllUserQuery request,
             CancellationToken cancellationToken
         )

@@ -3,11 +3,11 @@ using Domain;
 
 namespace Application.Users.Commands
 {
-    public record DeleteUserCommand(string id) : ICommand<Customer> { }
+    public record DeleteUserCommand(string id) : ICommand<CustomerModel> { }
 
-    public class DeleteUserCommandHandler : ICommandHandler<DeleteUserCommand, Customer>
+    public class DeleteUserCommandHandler : ICommandHandler<DeleteUserCommand, CustomerModel>
     {
-        public Task<Customer> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public Task<CustomerModel> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

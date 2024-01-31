@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Abstraction;
 
-public interface IUserRepository : IRepository<Customer>
+public interface IUserRepository : IRepository<CustomerModel>
 {
 
 }
