@@ -3,8 +3,12 @@ CA DB Demo
 ## Tech Stack
 
 - [x] Postgres SQL
+![Alt text](./doc/postgres-db.png)
 - [x] CA
-- [x]
+- [x] EF Core/Npgsql
+- [x] MediatR
+- [x] 
+- 
 
 ````dotnetcli
 
