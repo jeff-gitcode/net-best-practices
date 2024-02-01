@@ -1,0 +1,5 @@
+### get all customer
+```
+GET  https://localhost:7133/api/Customer HTTP/1.1
+content-type: application/json
+accept: text/plain

@@ -35,6 +35,8 @@ $ dotnet add .\Domain\ package Newtonsoft.Json
 $ dotnet build
 
 $ dotnet add .\Application\ package MediatR
+$ dotnet add .\Application\ package MediatR.Extensions.Microsoft.DependencyInjection
+$ dotnet add .\Application\ package FluentValidation.DependencyInjectionExtensions
 
 $ dotnet add .\Application\ package Microsoft.Extensions.DependencyInjection
 $ dotnet add .\Infrastructure\ package Microsoft.Extensions.DependencyInjection

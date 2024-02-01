@@ -35,6 +35,22 @@ public class CustomerController : ControllerBase
         return Ok(await _mediator.Send(command));
     }
 
+    [HttpGet("{id}", Name = "GetById")]
+    public async Task<ActionResult<Customer>> GetUserAsync(string id)
+    {
+        _logger.LogInformation("Presentation.Controllers");
+
+        return Ok(await _mediator.Send(new GetUserQuery(id)));
+    }
+
+    [HttpPut(Name = "")]
+    public async Task<ActionResult<Customer>> UpdateUserAsync(UpdateUserCommand command)
+    {
+        _logger.LogInformation("Presentation.Controllers");
+
+        return Ok(await _mediator.Send(command));
+    }
+
     [HttpGet(Name = "")]
     public async Task<ActionResult<IEnumerable<Customer>>> GetAllUsersAsync()
     {
