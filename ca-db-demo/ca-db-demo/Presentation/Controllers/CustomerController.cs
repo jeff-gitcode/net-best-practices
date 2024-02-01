@@ -32,7 +32,15 @@ public class CustomerController : ControllerBase
     {
         _logger.LogInformation("Presentation.Controllers");
 
-        return Ok(await _mediator.Send(command));
+        try
+        {
+            return Ok(await _mediator.Send(command));
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
     }
 
     [HttpGet("{id}", Name = "GetById")]
@@ -48,7 +56,14 @@ public class CustomerController : ControllerBase
     {
         _logger.LogInformation("Presentation.Controllers");
 
-        return Ok(await _mediator.Send(command));
+        try
+        {
+            return Ok(await _mediator.Send(command));
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 
     [HttpGet(Name = "")]

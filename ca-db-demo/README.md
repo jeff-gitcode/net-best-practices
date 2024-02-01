@@ -7,7 +7,7 @@ CA DB Demo
 - [x] CA
 - [x] EF Core/Npgsql
 - [x] MediatR
-- [x] 
+- [x] Result Pattern - FluentResult
 - 
 
 ````dotnetcli
@@ -58,4 +58,7 @@ $ dotnet sdk check
 
 $ dotnet tool install --global dotnet-ef
 
+# fluent result
+
+$ dotnet add .\WebApi\ package FluentResults
 ```

@@ -5,6 +5,7 @@ using Presentation;
 using Infrastructure.db;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Application.Abstraction;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,9 +32,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorResponseHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
