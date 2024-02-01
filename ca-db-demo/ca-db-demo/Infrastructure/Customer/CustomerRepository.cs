@@ -13,7 +13,7 @@ public class CustomerRepository : IUserRepository
         _context = context;
     }
 
-    public Task<CustomerModel> Add(CustomerModel entity)
+    public async Task<CustomerModel> Add(CustomerModel entity)
     {
         var user = new Customer()
         {
@@ -24,36 +24,38 @@ public class CustomerRepository : IUserRepository
             Token = entity.Token,
         };
 
-        _context.Customers.AddAsync(user);
-        return Task.FromResult(entity);
+        await  _context.Customers.AddAsync(user);
+        await _context.SaveChangesAsync();
+        return entity;
 
     }
 
-    public Task<CustomerModel> Delete(string id)
+    public async Task<CustomerModel> Delete(string id)
     {
-        var user = _context.Customers.Find(id);
+        var user = await _context.Customers.FindAsync(id);
         _context.Customers.Remove(user);
-        return Task.FromResult(new CustomerModel
+        await _context.SaveChangesAsync();
+        return new CustomerModel
         {
             Id = user.Id,
             Name = user.Name,
             Email = user.Email,
             Password = user.Password,
             Token = user.Token,
-        });
+        };
     }
 
-    public Task<CustomerModel> Get(string id)
+    public async Task<CustomerModel> Get(string id)
     {
-        var user = _context.Customers.Find(id);
-        return Task.FromResult(new CustomerModel
+        var user = await _context.Customers.FindAsync(id);
+        return new CustomerModel
         {
             Id = user.Id,
             Name = user.Name,
             Email = user.Email,
             Password = user.Password,
             Token = user.Token,
-        });
+        };
     }
 
     public async Task<IEnumerable<CustomerModel>> GetAll()
@@ -70,16 +72,17 @@ public class CustomerRepository : IUserRepository
         });
     }
 
-    public Task<CustomerModel> Update(CustomerModel entity)
+    public async Task<CustomerModel> Update(CustomerModel entity)
     {
-        var user = _context.Customers.Find(entity.Id);
+        var user = await _context.Customers.FindAsync(entity.Id);
         user.Name = entity.Name;
         user.Email = entity.Email;
         user.Password = entity.Password;
         user.Token = entity.Token;
 
         _context.Customers.Update(user);
-        return Task.FromResult(entity);
+        await _context.SaveChangesAsync();
+        return entity;
     }
 
 }

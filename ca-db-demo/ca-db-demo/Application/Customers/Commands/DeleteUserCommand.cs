@@ -7,9 +7,18 @@ namespace Application.Users.Commands
 
     public class DeleteUserCommandHandler : ICommandHandler<DeleteUserCommand, CustomerModel>
     {
-        public Task<CustomerModel> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        private readonly IUserRepository _repository;
+
+        public DeleteUserCommandHandler(IUserRepository repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
+        }
+
+        public async Task<CustomerModel> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _repository.Delete(request.id);
+
+            return user;
         }
     }
 }

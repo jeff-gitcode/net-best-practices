@@ -1,5 +1,52 @@
+
 ### get all customer
-```
-GET  https://localhost:7133/api/Customer HTTP/1.1
+GET  http://localhost:5293/api/Customer HTTP/1.1
 content-type: application/json
 accept: text/plain
+
+### get customer
+GET  http://localhost:5293/api/Customer/d968f412-7e61-442a-8d3f-c0c0862a473a HTTP/1.1
+content-type: application/json
+accept: text/plain
+
+
+### create customer
+POST  http://localhost:5293/api/Customer HTTP/1.1
+content-type: application/json
+
+{
+    "user": {
+        "name": "customer 1",
+        "address": "address 1",
+        "phone": "phone 1",
+        "email": "email 1",
+        "role": "customer",
+        "password": "password 1",
+        "token": "token 1"
+    }
+}
+
+### update customer
+PUT  http://localhost:5293/api/Customer HTTP/1.1
+content-type: application/json
+
+{
+  "customer": {
+    "id": "0f3659f7-c8d5-46a7-b846-8ec96fbeacb4",
+    "name": "John Doe Update",
+    "email": "john.doe@test.com",
+    "password": "test",
+    "role": "",
+    "token": ""
+  }
+}
+
+### delete customer
+DELETE  http://localhost:5293/api/Customer HTTP/1.1
+content-type: application/json
+
+{
+    "id": "0f3659f7-c8d5-46a7-b846-8ec96fbeacb4"
+}
+
+
