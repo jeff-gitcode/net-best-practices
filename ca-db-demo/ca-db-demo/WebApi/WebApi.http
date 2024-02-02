@@ -4,3 +4,47 @@ GET {{WebApi_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{WebApi_HostAddress}}/api/Customer
+Accept: application/json
+
+###
+
+### create customer
+POST  {{WebApi_HostAddress}}/api/Customer
+content-type: application/json
+
+{
+    "user": {
+        "name": "customer 1",
+        "address": "address 1",
+        "phone": "phone 1",
+        "email": "email 1",
+        "role": "customer",
+        "password": "password 1",
+        "token": "token 1"
+    }
+}
+
+### update customer
+PUT  {{WebApi_HostAddress}}/api/Customer HTTP/1.1
+content-type: application/json
+
+{
+  "customer": {
+    "id": "a2623d03-1cba-4c52-aac9-708e7ad79dd3",
+    "name": "John Doe Update",
+    "email": "john.doe@test.com",
+    "password": "test",
+    "role": "",
+    "token": ""
+  }
+}
+
+### delete customer
+DELETE  http://localhost:5293/api/Customer HTTP/1.1
+content-type: application/json
+
+{
+    "id": "a2623d03-1cba-4c52-aac9-708e7ad79dd3"
+}

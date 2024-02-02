@@ -8,7 +8,8 @@ CA DB Demo
 - [x] EF Core/Npgsql
 - [x] MediatR
 - [x] Result Pattern - FluentResult
-- 
+- [x] REST Client extension
+![Alt text](./doc/webapi-http-demo.gif)
 
 ````dotnetcli
 
