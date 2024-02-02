@@ -10,6 +10,7 @@ CA DB Demo
 - [x] Result Pattern - FluentResult
 - [x] REST Client extension
 ![Alt text](./doc/webapi-http-demo.gif)
+- [x] Contract Test - PactNET
 
 ````dotnetcli
 
@@ -60,6 +61,12 @@ $ dotnet sdk check
 $ dotnet tool install --global dotnet-ef
 
 # fluent result
-
 $ dotnet add .\WebApi\ package FluentResults
+
+# unit test
+$ dotnet new xunit -o UnitTests
+$ dotnet sln add .\UnitTests\UnitTests.csproj
+
+# contract test
+$ dotnet add .\UnitTests package PactNet
 ```

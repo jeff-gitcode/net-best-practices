@@ -3,6 +3,7 @@ using Application.Users.Commands;
 using Application.Users.Queries;
 using Domain;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -36,8 +37,16 @@ public class CustomerController : ControllerBase
     }
 
     [HttpGet("{id}", Name = "GetById")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<Customer>> GetUserAsync(string id)
     {
+        if (id == null)
+        {
+            return BadRequest();
+        }
+
         _logger.LogInformation("Presentation.Controllers");
 
         return Ok(await _mediator.Send(new GetUserQuery(id)));

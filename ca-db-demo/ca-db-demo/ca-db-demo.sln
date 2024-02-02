@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "解决方案项", "解决�
 		http-client.env.json = http-client.env.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{B3D6089D-5031-4015-8413-F04426B328F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{E5DBF17A-280B-4ED0-B876-62E4321F2A39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5DBF17A-280B-4ED0-B876-62E4321F2A39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5DBF17A-280B-4ED0-B876-62E4321F2A39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D6089D-5031-4015-8413-F04426B328F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D6089D-5031-4015-8413-F04426B328F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D6089D-5031-4015-8413-F04426B328F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D6089D-5031-4015-8413-F04426B328F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
