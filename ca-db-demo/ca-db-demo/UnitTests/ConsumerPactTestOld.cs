@@ -14,6 +14,26 @@ using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace BrewUp.ContractTest;
 
+public static class ConsumerApiClient
+{
+    static public async Task<HttpResponseMessage> GetPersonUsingGuideApi(
+        Uri baseUri,
+        CancellationToken cancellationToken = default)
+    {
+        using (var client = new HttpClient { BaseAddress = baseUri })
+        {
+            try
+            {
+                return await client.GetAsync($"/api/Customer", cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("There was a problem connecting to Provider API.", ex);
+            }
+        }
+    }
+}
+
 /// <summary>
 /// https://github.com/DiUS/pact-workshop-dotnet-core-v3/
 /// </summary>
@@ -62,24 +82,29 @@ public class PurchasesContracts
 
         _pactBuilder
             .UponReceiving("a request for purchases orders")
-            .Given("a request without parameters")
             .WithRequest(HttpMethod.Get, "/api/Customer")
             .WithHeader("Accept", "application/json")
             .WillRespond()
-            .WithStatus(HttpStatusCode.OK);
+            .WithStatus(HttpStatusCode.OK)
+            .WithHeader("Content-Type", "application/json; charset=utf-8")
+            .WithJsonBody(httpContent);
 
         await _pactBuilder.VerifyAsync(async ctx =>
         {
-            _mockFactory
-                .Setup(f => f.CreateClient("Purchases"))
-                .Returns(() => new HttpClient
-                {
-                    BaseAddress = ctx.MockServerUri,
-                    DefaultRequestHeaders =
-                    {
-                        Accept = { MediaTypeWithQualityHeaderValue.Parse("application/json") }
-                    }
-                });
+            var response = await ConsumerApiClient.GetPersonUsingGuideApi(ctx.MockServerUri);
+            var body = await response.Content.ReadAsStringAsync();
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+
+            //_mockFactory
+            //    .Setup(f => f.CreateClient("Purchases"))
+            //    .Returns(() => new HttpClient
+            //    {
+            //        BaseAddress = ctx.MockServerUri,
+            //        DefaultRequestHeaders =
+            //        {
+            //            Accept = { MediaTypeWithQualityHeaderValue.Parse("application/json") }
+            //        }
+            //    });
 
 
         });

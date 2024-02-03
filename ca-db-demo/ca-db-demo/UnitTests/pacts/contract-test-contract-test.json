@@ -1,0 +1,76 @@
+{
+  "consumer": {
+    "name": "contract-test"
+  },
+  "interactions": [
+    {
+      "description": "a request to retrieve a customer with existing id",
+      "request": {
+        "method": "GET",
+        "path": "/api/Customer/1"
+      },
+      "response": {
+        "body": {
+          "email": "food@test.com",
+          "id": "1",
+          "name": "burger",
+          "password": "",
+          "role": "",
+          "token": ""
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    },
+    {
+      "description": "a request to retrieve a product id that does not exist",
+      "request": {
+        "method": "GET",
+        "path": "/api/Customer/20"
+      },
+      "response": {
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 404
+      }
+    },
+    {
+      "description": "a request to retrieve all customers",
+      "request": {
+        "method": "GET",
+        "path": "/api/Customer"
+      },
+      "response": {
+        "body": [
+          {
+            "email": "test@test.com",
+            "id": "1",
+            "name": "Test",
+            "password": "password",
+            "role": "",
+            "token": "123"
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pactRust": {
+      "ffi": "0.4.0",
+      "models": "1.0.4"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "contract-test"
+  }
+}
