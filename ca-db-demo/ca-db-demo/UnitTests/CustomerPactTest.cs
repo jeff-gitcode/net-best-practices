@@ -5,6 +5,7 @@ using Newtonsoft.Json.Serialization;
 using PactNet.Output.Xunit;
 using PactNet.Infrastructure.Outputters;
 using Domain;
+using Microsoft.AspNetCore.Routing;
 
 namespace tests
 {
@@ -126,8 +127,100 @@ namespace tests
 
                 //Assert
                 var ex = await Assert.ThrowsAsync<HttpRequestException>(() => client.GetById(ctx.MockServerUri.AbsoluteUri, 20, null));
-                Assert.Equal("Response status code does not indicate success: 404 (Not Found).", ex.Message);   
+                Assert.Equal("Response status code does not indicate success: 404 (Not Found).", ex.Message);
             });
+        }
+
+        [Fact]
+        async public Task AddCustomer()
+        {
+            var expected = new
+                CustomerModel
+            {
+                Id = "1",
+                Name = "burger",
+                Email = "food@test.com"
+            };
+
+            pact
+              .UponReceiving($"Creating a item")
+              .Given("No items")
+              .WithRequest(HttpMethod.Post, $"/api/Customer")
+              .WithJsonBody(expected)
+              .WillRespond()
+              .WithStatus(201)
+              .WithJsonBody(expected);
+
+            await pact.VerifyAsync(async ctx =>
+            {
+
+                var client = new TestClient();
+
+                var result = await client.Add(ctx.MockServerUri.AbsoluteUri, expected);
+                Assert.Equal(expected, result);
+
+            });
+        }
+
+        [Fact]
+        async public Task UpdateCustomer()
+        {
+            var expected = new
+                CustomerModel
+            {
+                Id = "1",
+                Name = "burger",
+                Email = "email@test.com"
+            };
+
+
+            pact
+              .UponReceiving($"Updating a item")
+              .Given("An item with id 1 exists")
+              .WithRequest(HttpMethod.Put, $"/api/Customer")
+              .WithJsonBody(expected)
+              .WillRespond()
+              .WithStatus(200)
+              .WithJsonBody(expected);
+
+            await pact.VerifyAsync(async ctx =>
+            {
+
+                var client = new TestClient();
+
+                var result = await client.Update(ctx.MockServerUri.AbsoluteUri, expected);
+                Assert.Equal(expected, result);
+
+            });
+
+
+        }
+
+        [Fact]
+        async public Task DeleteCustomer()
+        {
+            var expected = new
+            {
+                Id = "1",
+            };
+
+
+            pact
+              .UponReceiving($"Deleting a item")
+              .Given("An item with id 1 exists")
+              .WithRequest(HttpMethod.Delete, $"/api/Customer")
+              .WithJsonBody(expected)
+              .WillRespond()
+              .WithStatus(200);
+
+            await pact.VerifyAsync(async ctx =>
+            {
+
+                var client = new TestClient();
+
+                await client.Delete(ctx.MockServerUri.AbsoluteUri, 1);
+            });
+
         }
     }
 }
