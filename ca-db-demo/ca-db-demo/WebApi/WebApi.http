@@ -15,7 +15,7 @@ POST  {{WebApi_HostAddress}}/api/Customer
 content-type: application/json
 
 {
-    "user": {
+    "Customer": {
         "name": "customer 1",
         "address": "address 1",
         "phone": "phone 1",

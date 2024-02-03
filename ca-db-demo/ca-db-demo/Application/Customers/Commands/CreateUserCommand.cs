@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Users.Commands
 {
-    public record CreateUserCommand(CustomerModel user) : ICommand<CustomerModel> { }
+    public record CreateUserCommand(CustomerModel Customer) : ICommand<CustomerModel> { }
 
     public class CreateUserCommandHandler : ICommandHandler<CreateUserCommand, CustomerModel>
     {
@@ -22,7 +22,7 @@ namespace Application.Users.Commands
             CancellationToken cancellationToken
         )
         {
-            var result = await _repository.Add(request.user);
+            var result = await _repository.Add(request.Customer);
 
             // await _publisher.Publish(new CreateUserNotification(result), cancellationToken);
 
