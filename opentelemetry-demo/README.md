@@ -3,14 +3,14 @@
 ## Tech Stack
 
 - [x] Open Telemetry
-- ![alt text](./doc/opentelemetry-demo.PNG)
+- ![alt text](doc/opentelemetry-demo.PNG)
 - [x] Prometheus
-- ![alt text](./doc/prometheus-demo.PNG)
+- ![alt text](doc/prometheus-demo.PNG)
 - [x] Grafana
-- ![alt text](./doc/grafana-demo.PNG)
+- ![alt text](doc/grafana-demo.PNG)
 - [x] Jaeger
-- ![alt text](./doc/greeting-demo.PNG)
-- ![alt text](./doc/jaeger-demo.PNG)
+- ![alt text](doc/greeting-demo.PNG)
+- ![alt text](doc/jaeger-demo.PNG)
 
 ```c#
 $ dotnet new web
