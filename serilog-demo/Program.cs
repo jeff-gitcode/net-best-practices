@@ -49,6 +49,7 @@ builder.Services.AddOpenTelemetry()
 builder.Host.UseSerilog((ctx, lc) => lc
         .Enrich.FromLogContext()
         .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {CorrelationId} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+        .Enrich.WithCorrelationId()
         .WriteTo.OpenTelemetry(options =>
         {
             options.Endpoint = builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"];
@@ -91,6 +92,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseSerilogRequestLogging();
 
 app.UseHttpsRedirection();
 

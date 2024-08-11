@@ -195,6 +195,11 @@ $ dotnet add .\serilog-demo package Serilog.Extensions.Logging
 $ dotnet add .\serilog-demo package Serilog.Sinks.Console
 $ dotnet add .\serilog-demo package Serilog.Sinks.OpenTelemetry
 
+# serilog enricher
+$ dotnet add .\serilog-demo package Serilog.Enrichers.Environment
+$ dotnet add .\serilog-demo package Serilog.Enrichers.Process
+$ dotnet add .\serilog-demo package Serilog.Enrichers.Thread
+
 $ dotnet add .\serilog-demo package OpenTelemetry
 $ dotnet add .\serilog-demo package OpenTelemetry.Extensions.Hosting
 $ dotnet add .\serilog-demo package OpenTelemetry.Instrumentation.AspNetCore
