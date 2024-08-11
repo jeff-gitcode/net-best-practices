@@ -3,29 +3,30 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "json-source-generator", "json-source-generator\json-source-generator.csproj", "{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "json-source-generator", "json-source-generator\json-source-generator.csproj", "{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "coravel-demo", "coravel-demo\coravel-demo.csproj", "{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "coravel-demo", "coravel-demo\coravel-demo.csproj", "{C4CCAB1F-55DC-4B9E-9278-276E9B552D95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restsharp-demo", "restsharp-demo\restsharp-demo.csproj", "{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "restsharp-demo", "restsharp-demo\restsharp-demo.csproj", "{AF63D63B-C034-4A78-9AB3-C1CBA71B17EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "quic-demo", "quic-demo", "{08B025E5-3E68-4D07-B7CB-F94602127453}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-server", "quic-demo\quic-server\quic-server.csproj", "{296DEAFE-9657-48BA-BC8E-47E6CE647960}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quic-server", "quic-demo\quic-server\quic-server.csproj", "{296DEAFE-9657-48BA-BC8E-47E6CE647960}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quic-client", "quic-demo\quic-client\quic-client.csproj", "{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "quic-client", "quic-demo\quic-client\quic-client.csproj", "{44025466-F6FB-45B8-B4F0-826BCDF7FEB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sieve-demo", "sieve-demo\sieve-demo.csproj", "{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sieve-demo", "sieve-demo\sieve-demo.csproj", "{1D6E96E0-CA64-4558-B211-4B4FDE9C2A71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "serilog-demo", "serilog-demo\serilog-demo.csproj", "{3AB64AE7-0955-4C13-A526-5E1076F307E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "serilog-demo", "serilog-demo\serilog-demo.csproj", "{3AB64AE7-0955-4C13-A526-5E1076F307E4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net-best-practices.AppHost", "net-best-practices.AppHost\net-best-practices.AppHost.csproj", "{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net-best-practices.ServiceDefaults", "net-best-practices.ServiceDefaults\net-best-practices.ServiceDefaults.csproj", "{2593DB7A-C422-4A02-B2DA-FAC86731C35F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D066A710-9365-4AC8-A0AE-B92C0D07F2A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -56,6 +57,17 @@ Global
 		{3AB64AE7-0955-4C13-A526-5E1076F307E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AB64AE7-0955-4C13-A526-5E1076F307E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AB64AE7-0955-4C13-A526-5E1076F307E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{296DEAFE-9657-48BA-BC8E-47E6CE647960} = {08B025E5-3E68-4D07-B7CB-F94602127453}

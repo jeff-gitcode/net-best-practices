@@ -193,6 +193,12 @@ $ dotnet add .\serilog-demo package Serilog
 $ dotnet add .\serilog-demo package Serilog.AspNetCore
 $ dotnet add .\serilog-demo package Serilog.Extensions.Logging
 $ dotnet add .\serilog-demo package Serilog.Sinks.Console
+$ dotnet add .\serilog-demo package Serilog.Sinks.OpenTelemetry
+
+$ dotnet add .\serilog-demo package OpenTelemetry
+$ dotnet add .\serilog-demo package OpenTelemetry.Extensions.Hosting
+$ dotnet add .\serilog-demo package OpenTelemetry.Instrumentation.AspNetCore
+$ dotnet add .\serilog-demo package OpenTelemetry.Instrumentation.Http
 
 $ dotnet run --project .\serilog-demo\
 ```
