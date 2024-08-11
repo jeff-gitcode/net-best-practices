@@ -184,4 +184,15 @@ $ docker stop myredis
 $ docker compose down
 $ docker build . -t api -f .\WebApi\Dockerfile
 $ docker compose up
+
+
+# serilog demo
+$ dotnet new webapi -o serilog-demo
+$ dotnet sln add serilog-demo
+$ dotnet add .\serilog-demo package Serilog
+$ dotnet add .\serilog-demo package Serilog.AspNetCore
+$ dotnet add .\serilog-demo package Serilog.Extensions.Logging
+$ dotnet add .\serilog-demo package Serilog.Sinks.Console
+
+$ dotnet run --project .\serilog-demo\
 ```
