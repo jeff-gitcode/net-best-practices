@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sieve-demo", "sieve-demo\si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "serilog-demo", "serilog-demo\serilog-demo.csproj", "{3AB64AE7-0955-4C13-A526-5E1076F307E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net-best-practices.AppHost", "net-best-practices.AppHost\net-best-practices.AppHost.csproj", "{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net-best-practices.AppHost", "net-best-practices.AppHost\net-best-practices.AppHost.csproj", "{35ACF6DD-B172-4BC4-A6A4-A8983E29265C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net-best-practices.ServiceDefaults", "net-best-practices.ServiceDefaults\net-best-practices.ServiceDefaults.csproj", "{2593DB7A-C422-4A02-B2DA-FAC86731C35F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTestDemo.Tests", "IntegrationTestDemo.Tests\IntegrationTestDemo.Tests.csproj", "{DFE39328-D829-41D3-B210-A4A8E1AD2FF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTestDemo", "IntegrationTestDemo\IntegrationTestDemo.csproj", "{ACEB386C-DD49-4DAA-B45E-406C1E01CB1C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +69,14 @@ Global
 		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2593DB7A-C422-4A02-B2DA-FAC86731C35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE39328-D829-41D3-B210-A4A8E1AD2FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE39328-D829-41D3-B210-A4A8E1AD2FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE39328-D829-41D3-B210-A4A8E1AD2FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE39328-D829-41D3-B210-A4A8E1AD2FF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACEB386C-DD49-4DAA-B45E-406C1E01CB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACEB386C-DD49-4DAA-B45E-406C1E01CB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACEB386C-DD49-4DAA-B45E-406C1E01CB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACEB386C-DD49-4DAA-B45E-406C1E01CB1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

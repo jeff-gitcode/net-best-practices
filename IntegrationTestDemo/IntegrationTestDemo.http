@@ -1,0 +1,31 @@
+@IntegrationTestDemo_HostAddress = http://localhost:5146
+
+GET {{IntegrationTestDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Create TODO
+
+POST {{IntegrationTestDemo_HostAddress}}/todoitems/v1
+Content-Type: application/json
+
+{
+  "name":"walk dog",
+  "isComplete":true
+}
+
+### Get Todo List
+GET {{IntegrationTestDemo_HostAddress}}/todoitems/v1
+Accept: application/json
+
+### Update Todo List
+PUT  {{IntegrationTestDemo_HostAddress}}/todoitems/v1/1
+content-type: application/json
+
+{
+  "name": "feed fish",
+  "isComplete": false
+}
+
+#### Delete Todo List
+DELETE  {{IntegrationTestDemo_HostAddress}}/todoitems/v1/1
+content-type: application/json

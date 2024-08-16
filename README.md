@@ -206,4 +206,17 @@ $ dotnet add .\serilog-demo package OpenTelemetry.Instrumentation.AspNetCore
 $ dotnet add .\serilog-demo package OpenTelemetry.Instrumentation.Http
 
 $ dotnet run --project .\serilog-demo\
+
+# integrationn test
+$ dotnet new webapi -o IntegrationTestDemo
+# or to create controller
+$ dotnet new webapi --use-controllers -o IntegrationTestDemo
+$ dotnet sln add IntegrationTestDemo
+$ dotnet run --project .\IntegrationTestDemo\
+$ dotnet dev-certs https --trust
+$ dotnet add .\IntegrationTestDemo package Microsoft.EntityFrameworkCore.InMemory
+$ dotnet add .\IntegrationTestDemo package Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore
+$ dotnet add .\IntegrationTestDemo package NSwag.AspNetCore
+$ dotnet new xunit -o IntegrationTestDemo.Tests 
+$ dotnet add ./IntegrationTestDemo.Tests/IntegrationTestDemo.Tests.csproj reference ./IntegrationTestDemo/IntegrationTestDemo.csproj  
 ```
