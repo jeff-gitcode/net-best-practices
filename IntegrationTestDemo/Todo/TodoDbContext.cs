@@ -7,6 +7,6 @@ namespace IntegrationTestDemo.Todo
         public TodoDbContext(DbContextOptions<TodoDbContext> options)
             : base(options) { }
 
-        public DbSet<Todo> Todos => Set<Todo>();
+        public DbSet<TodoEntity> Todos => Set<TodoEntity>();
     }
 }

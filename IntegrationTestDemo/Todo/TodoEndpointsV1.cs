@@ -33,7 +33,7 @@ namespace IntegrationTestDemo.Todo
 
         // get all todos
         // <snippet_1>
-        public static async Task<Ok<List<Todo>>> GetAllTodos(TodoDbContext database)
+        public static async Task<Ok<List<TodoEntity>>> GetAllTodos(TodoDbContext database)
         {
             var todos = await database.Todos.ToListAsync();
             return TypedResults.Ok(todos);
@@ -41,7 +41,7 @@ namespace IntegrationTestDemo.Todo
         // </snippet_1>
 
         // get todo by id
-        public static async Task<Results<Ok<Todo>, NotFound>> GetTodo(int id, TodoDbContext database)
+        public static async Task<Results<Ok<TodoEntity>, NotFound>> GetTodo(int id, TodoDbContext database)
         {
             var todo = await database.Todos.FindAsync(id);
 
@@ -53,7 +53,7 @@ namespace IntegrationTestDemo.Todo
             return TypedResults.NotFound();
         }
 
-        public static async Task<Results<Ok<List<Todo>>, NotFound>> GetTodoComplete(TodoDbContext database)
+        public static async Task<Results<Ok<List<TodoEntity>>, NotFound>> GetTodoComplete(TodoDbContext database)
         {
             var todos = await database.Todos.Where(t => t.IsComplete).ToListAsync();
 
@@ -67,7 +67,7 @@ namespace IntegrationTestDemo.Todo
 
 
         // create todo
-        public static async Task<Created<Todo>> CreateTodo(Todo todo, TodoDbContext database)
+        public static async Task<Created<TodoEntity>> CreateTodo(TodoEntity todo, TodoDbContext database)
         {
             await database.Todos.AddAsync(todo);
             await database.SaveChangesAsync();
@@ -76,7 +76,7 @@ namespace IntegrationTestDemo.Todo
         }
 
         // update todo
-        public static async Task<Results<Created<Todo>, NotFound>> UpdateTodo(int id, Todo inputTodo, TodoDbContext database)
+        public static async Task<Results<Created<TodoEntity>, NotFound>> UpdateTodo(int id, TodoEntity inputTodo, TodoDbContext database)
         {
             var existingTodo = await database.Todos.FindAsync(id);
 
