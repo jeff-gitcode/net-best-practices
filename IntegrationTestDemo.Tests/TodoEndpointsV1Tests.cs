@@ -7,12 +7,12 @@ using System.Net.Http.Json;
 namespace IntegrationTestDemo.Tests;
 
 [Collection("Sequential")]
-public class TodoEndpointsV1Tests : IClassFixture<TestWebApplicationFactory<Program>>
+public class TodoEndpointsV1Tests : IClassFixture<IntegrationTestWebApplicationFactory<Program>>
 {
-    private readonly TestWebApplicationFactory<Program> _factory;
+    private readonly IntegrationTestWebApplicationFactory<Program> _factory;
     private readonly HttpClient _httpClient;
 
-    public TodoEndpointsV1Tests(TestWebApplicationFactory<Program> factory)
+    public TodoEndpointsV1Tests(IntegrationTestWebApplicationFactory<Program> factory)
     {
         _factory = factory;
         _httpClient = factory!.CreateClient();
