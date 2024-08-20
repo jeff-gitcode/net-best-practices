@@ -1,0 +1,27 @@
+@IntegrationTestDemo_HostAddress = http://localhost:5146
+
+POST {{IntegrationTestDemo_HostAddress}}/useritems/v1
+Content-Type: application/json
+
+{
+  "name":"walk dog",
+  "isComplete":true
+}
+
+### Get user List
+GET {{IntegrationTestDemo_HostAddress}}/useritems/v1
+Accept: application/json
+content-type: application/json
+
+### Update user List
+PUT  {{IntegrationTestDemo_HostAddress}}/useritems/v1/1
+content-type: application/json
+
+{
+  "name": "feed fish",
+  "isComplete": false
+}
+
+#### Delete user List
+DELETE  {{IntegrationTestDemo_HostAddress}}/useritems/v1/1
+content-type: application/json

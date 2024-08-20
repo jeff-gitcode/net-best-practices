@@ -1,10 +1,12 @@
 using IntegrationTestDemo.Todo;
+using IntegrationTestDemo.User;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<TodoDbContext>(opt => opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("TodoList"));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -15,6 +17,8 @@ builder.Services.AddOpenApiDocument(config =>
     config.Title = "TodoAPI v1";
     config.Version = "v1";
 });
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 
@@ -55,9 +59,13 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-app.MapGroup("/todoitems/v1")
-    .MapTodosApiV1()
-    .WithTags("Todo Endpoints");
+//app.MapGroup("/todoitems/v1")
+//    .MapTodosApiV1()
+//    .WithTags("Todo Endpoints");
+
+app.MapGroup("/useritems/v1")
+    .MapUsersApiV1()
+    .WithTags("User Endpoints");
 
 // app.MapGet("/todoitems", async (TodoDbContext db) =>
 //     await db.Todos.ToListAsync());

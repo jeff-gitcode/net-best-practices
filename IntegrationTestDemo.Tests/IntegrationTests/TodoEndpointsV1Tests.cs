@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Net.Http.Json;
 
-namespace IntegrationTestDemo.Tests;
+namespace IntegrationTestDemo.Tests.IntegrationTests;
 
 [Collection("Sequential")]
 public class TodoEndpointsV1Tests : IClassFixture<IntegrationTestWebApplicationFactory<Program>>
