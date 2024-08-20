@@ -2,7 +2,7 @@ using IntegrationTestDemo.Todo;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
-namespace IntegrationTestDemo.Tests;
+namespace IntegrationTestDemo.Tests.UnitTests;
 
 public class ToDoTests
 {

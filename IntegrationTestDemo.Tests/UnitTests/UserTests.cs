@@ -11,7 +11,7 @@ public class UserTests
     {
         // Arrange
         var httpClient = new HttpClient();
-        await using var context = new MockDb().CreateDbContext();
+        await using var context = new MockUserDb().CreateDbContext();
 
         context.Users.Add(new UserEntity
         {
@@ -54,7 +54,7 @@ public class UserTests
     public async Task GetUserReturnsUserFromDatabase()
     {
         // Arrange
-        await using var context = new MockDb().CreateDbContext();
+        await using var context = new MockUserDb().CreateDbContext();
 
         context.Users.Add(new UserEntity
         {
@@ -81,7 +81,7 @@ public class UserTests
     public async Task CreateUserCreatesUserInDatabase()
     {
         //Arrange
-        await using var context = new MockDb().CreateDbContext();
+        await using var context = new MockUserDb().CreateDbContext();
 
         var newUser = new UserEntity
         {
@@ -110,7 +110,7 @@ public class UserTests
     public async Task UpdateUserUpdatesUserInDatabase()
     {
         //Arrange
-        await using var context = new MockDb().CreateDbContext();
+        await using var context = new MockUserDb().CreateDbContext();
 
         context.Users.Add(new UserEntity
         {
@@ -150,7 +150,7 @@ public class UserTests
     public async Task DeleteUserDeletesUserInDatabase()
     {
         //Arrange
-        await using var context = new MockDb().CreateDbContext();
+        await using var context = new MockUserDb().CreateDbContext();
 
         var existingUser = new UserEntity
         {
@@ -177,7 +177,7 @@ public class UserTests
 
 }
 
-public class MockDb : IDbContextFactory<UserDbContext>
+public class MockUserDb : IDbContextFactory<UserDbContext>
 {
     public UserDbContext CreateDbContext()
     {

@@ -22,25 +22,27 @@ public class IntegrationTestWebApplicationFactory<TProgram>
         {
         });
 
-        builder.ConfigureTestServices(services =>
-        {
-            //Add stub classes
-            //_stub = Mock.Of<ISampleDependency>();
-            //services.RemoveAll<ISampleDependency>();
-            // services.TryAddTransient(_ => _stub);
-            //or services.AddTransient<ISampleDependency, MockSampleDependency>();
+        builder.ConfigureTestServices(ConfigureTestServices);
+    }
 
-            services.RemoveAll<HttpClient>();
+    protected virtual void ConfigureTestServices(IServiceCollection services)
+    {
+        //Add stub classes
+        //_stub = Mock.Of<ISampleDependency>();
+        //services.RemoveAll<ISampleDependency>();
+        // services.TryAddTransient(_ => _stub);
+        //or services.AddTransient<ISampleDependency, MockSampleDependency>();
 
-            MockHttpHandler = new MockHttpMessageHandler();
+        services.RemoveAll<HttpClient>();
 
-            var httpClient = MockHttpHandler.ToHttpClient();
+        MockHttpHandler = new MockHttpMessageHandler();
 
-            services.AddSingleton<HttpClient>(httpClient);
+        var httpClient = MockHttpHandler.ToHttpClient();
 
-            //Configure logging
-            services.AddLogging(builder => builder.ClearProviders().AddConsole().AddDebug());
-        });
+        services.AddSingleton<HttpClient>(httpClient);
+
+        //Configure logging
+        services.AddLogging(builder => builder.ClearProviders().AddConsole().AddDebug());
     }
 
     protected override IHost CreateHost(IHostBuilder builder)

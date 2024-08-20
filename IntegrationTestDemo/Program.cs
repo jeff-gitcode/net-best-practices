@@ -59,9 +59,9 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
-//app.MapGroup("/todoitems/v1")
-//    .MapTodosApiV1()
-//    .WithTags("Todo Endpoints");
+app.MapGroup("/todoitems/v1")
+    .MapTodosApiV1()
+    .WithTags("Todo Endpoints");
 
 app.MapGroup("/useritems/v1")
     .MapUsersApiV1()
