@@ -1,33 +1,25 @@
+using AutoFixture.Xunit2;
+using IntegrationTestDemo.Tests.IntegrationTests;
 using IntegrationTestDemo.User;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
+using RichardSzalay.MockHttp;
 
 namespace IntegrationTestDemo.Tests.UnitTests;
 
 public class UserTests
 {
-    [Fact]
-    public async Task GetAllReturnsUsersFromDatabase()
+    [Theory, AutoData]
+    public async Task GetAllReturnsUsersFromDatabase(List<UserEntity> expected)
     {
         // Arrange
-        var httpClient = new HttpClient();
+        string url = $"https://jsonplaceholder.typicode.com/users";
+        var mockHttpHandler = new MockHttpMessageHandler();
+        mockHttpHandler.When(url).RespondJson<List<UserEntity>>(expected);
+
+        var httpClient = new HttpClient(mockHttpHandler);
+
         await using var context = new MockUserDb().CreateDbContext();
-
-        context.Users.Add(new UserEntity
-        {
-            Id = 1,
-            Name = "Test1",
-            Email = "email",
-        });
-
-        context.Users.Add(new UserEntity
-        {
-            Id = 2,
-            Name = "Test2",
-            Email = "email",
-        });
-
-        await context.SaveChangesAsync();
 
         // Act
         var result = await UserEndpointsV1.GetAll(context, httpClient);
@@ -37,17 +29,18 @@ public class UserTests
 
         Assert.NotNull(result.Value);
         Assert.NotEmpty(result.Value);
-        Assert.Collection(result.Value, user1 =>
-        {
-            Assert.Equal(1, user1.Id);
-            Assert.Equal("Test1", user1.Name);
-            Assert.Equal("email", user1.Email);
-        }, user2 =>
-        {
-            Assert.Equal(2, user2.Id);
-            Assert.Equal("Test2", user2.Name);
-            Assert.Equal("email", user2.Email);
-        });
+        Assert.Equivalent(expected, result.Value);
+        //Assert.Collection(result.Value, user1 =>
+        //{
+        //    Assert.Equal(1, user1.Id);
+        //    Assert.Equal("Test1", user1.Name);
+        //    Assert.Equal("email", user1.Email);
+        //}, user2 =>
+        //{
+        //    Assert.Equal(2, user2.Id);
+        //    Assert.Equal("Test2", user2.Name);
+        //    Assert.Equal("email", user2.Email);
+        //});
     }
 
     [Fact]
