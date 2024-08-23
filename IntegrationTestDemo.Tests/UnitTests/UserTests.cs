@@ -70,8 +70,8 @@ public class UserTests
         Assert.Equal(1, okResult.Value.Id);
     }
 
-    [Fact]
-    public async Task CreateUserCreatesUserInDatabase()
+    [Theory, AutoData]
+    public async Task CreateUserCreatesUserInDatabase(List<UserEntity> expected)
     {
         //Arrange
         await using var context = new MockUserDb().CreateDbContext();
@@ -82,8 +82,14 @@ public class UserTests
             Email = "email",
         };
 
+        string url = $"https://jsonplaceholder.typicode.com/users";
+        var mockHttpHandler = new MockHttpMessageHandler();
+        mockHttpHandler.When(url).RespondJson<List<UserEntity>>(expected);
+
+        var httpClient = new HttpClient(mockHttpHandler);
+
         //Act
-        var result = await UserEndpointsV1.Create(newUser, context);
+        var result = await UserEndpointsV1.Create(newUser, context, httpClient);
 
         //Assert
         Assert.IsType<Created<UserEntity>>(result);

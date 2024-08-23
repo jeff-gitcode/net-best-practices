@@ -4,8 +4,10 @@ POST {{IntegrationTestDemo_HostAddress}}/useritems/v1
 Content-Type: application/json
 
 {
-  "name":"walk dog",
-  "isComplete":true
+    "id": 1,
+    "name": "Leanne Graham",
+    "username": "Bret",
+    "email": "Sincere@april.biz"
 }
 
 ### Get user List
@@ -18,8 +20,10 @@ PUT  {{IntegrationTestDemo_HostAddress}}/useritems/v1/1
 content-type: application/json
 
 {
-  "name": "feed fish",
-  "isComplete": false
+  "id": 1,
+  "name": "Leanne Graham  UPDATED",
+  "username": "Bret",
+  "email": "Sincere@april.biz"
 }
 
 #### Delete user List

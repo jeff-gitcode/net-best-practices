@@ -20,11 +20,11 @@ namespace IntegrationTestDemo.User
         // <snippet_1>
         public static async Task<Ok<List<UserEntity>>> GetAll(UserDbContext database, HttpClient httpClient)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-                // etc.
-            };
+            //var options = new JsonSerializerOptions
+            //{
+            //    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            //    // etc.
+            //};
             string url = $"https://jsonplaceholder.typicode.com/users";
             try
             {
@@ -33,7 +33,7 @@ namespace IntegrationTestDemo.User
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();
-                    var users = JsonSerializer.Deserialize<List<UserEntity>>(content, options);
+                    var users = JsonSerializer.Deserialize<List<UserEntity>>(content);
                     return TypedResults.Ok(users);
                 }
 
@@ -62,8 +62,23 @@ namespace IntegrationTestDemo.User
         }
 
         // create
-        public static async Task<Created<UserEntity>> Create(UserEntity user, UserDbContext database)
+        public static async Task<Created<UserEntity>> Create(UserEntity user, UserDbContext database, HttpClient httpClient)
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                // etc.
+            };
+            string url = $"https://jsonplaceholder.typicode.com/users";
+            var response = await httpClient.PostAsJsonAsync(url, user);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<UserEntity>(jsonString, options);
+                return TypedResults.Created($"/useritems/v1/{result.Id}", result);
+            }
+
             await database.Users.AddAsync(user);
             await database.SaveChangesAsync();
 
@@ -71,14 +86,31 @@ namespace IntegrationTestDemo.User
         }
 
         // update
-        public static async Task<Results<Created<UserEntity>, NotFound>> Update(int id, UserEntity inputTodo, UserDbContext database)
+        public static async Task<Results<Created<UserEntity>, NotFound>> Update(int id, UserEntity user, UserDbContext database, HttpClient httpClient)
         {
+
+
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                // etc.
+            };
+            string url = $"https://jsonplaceholder.typicode.com/users/{id}";
+            var response = await httpClient.PutAsJsonAsync(url, user);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                var result = JsonSerializer.Deserialize<UserEntity>(jsonString, options);
+                return TypedResults.Created($"/useritems/v1/{result.Id}", result);
+            }
+
             var existingTodo = await database.Users.FindAsync(id);
 
             if (existingTodo != null)
             {
-                existingTodo.Name = inputTodo.Name;
-                existingTodo.Email = inputTodo.Email;
+                existingTodo.Name = user.Name;
+                existingTodo.Email = user.Email;
 
                 await database.SaveChangesAsync();
 
@@ -89,8 +121,21 @@ namespace IntegrationTestDemo.User
         }
 
         // delete user
-        public static async Task<Results<NoContent, NotFound>> Delete(int id, UserDbContext database)
+        public static async Task<Results<NoContent, NotFound>> Delete(int id, UserDbContext database, HttpClient httpClient)
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                // etc.
+            };
+            string url = $"https://jsonplaceholder.typicode.com/users/{id}";
+            var response = await httpClient.DeleteAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return TypedResults.NoContent();
+            }
+
             var user = await database.Users.FindAsync(id);
 
             if (user != null)

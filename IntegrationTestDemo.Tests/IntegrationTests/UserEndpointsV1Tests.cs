@@ -44,5 +44,36 @@ public class UserEndpointsV1Tests : IClassFixture<IntegrationTestWebApplicationF
         Assert.Equivalent(expected, actual);
     }
 
+    [Theory, AutoData]
+    public async Task AddUsers(List<UserEntity> expected)
+    {
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            // etc.
+        };
+
+        var url = "https://jsonplaceholder.typicode.com/users";
+
+        _factory.MockHttpHandler.When(url).RespondJson<List<UserEntity>>(expected);
+
+        var user = new UserEntity
+        {
+            Name = "Test Name",
+            Email = "email"
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("/useritems/v1", user);
+
+        response.EnsureSuccessStatusCode();
+
+        var content = await response.Content.ReadAsStringAsync();
+
+        var jsonContent = await response.Content.ReadFromJsonAsync<List<UserEntity>>();
+
+        var actual = JsonSerializer.Deserialize<List<UserEntity>>(content, options);
+
+        Assert.Equivalent(expected, actual);
+    }
 
 }
