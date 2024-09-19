@@ -13,5 +13,10 @@ $ docker compose up --build
 # http://localhost:8080
 $ docker compose down -v
 $ dotnet workload update
+$ dotnet tool install -g aspirate
+$ aspirate
+$ aspirate init
+# cd ./src/DockerWebApiDemo.AppHost
+$ aspirate generate -- output-format compose
 
 ```
