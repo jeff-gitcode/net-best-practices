@@ -1,0 +1,13 @@
+2024-08-31 21:07:22.447 +10:00 [INF] Now listening on: https://localhost:51911
+2024-08-31 21:07:22.475 +10:00 [INF] Now listening on: http://localhost:51912
+2024-08-31 21:07:22.477 +10:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-08-31 21:07:22.477 +10:00 [INF] Hosting environment: Development
+2024-08-31 21:07:22.477 +10:00 [INF] Content root path: C:\dev\net-best-practices\serilog-demo
+2024-08-31 21:07:46.528 +10:00 [INF] HTTP GET /weatherforecast/ responded 307 in 0.7568 ms
+2024-08-31 21:07:46.570 +10:00 [INF] Got request at {DateTimeOffset.Now}
+2024-08-31 21:07:46.574 +10:00 [INF] Got request at "2024-08-31T21:07:46.5720466+10:00" for forecast: [{"Date":"2024-09-01","TemperatureC":25,"Summary":"Bracing","TemperatureF":76,"$type":"WeatherForecast"},{"Date":"2024-09-02","TemperatureC":-9,"Summary":"Chilly","TemperatureF":16,"$type":"WeatherForecast"},{"Date":"2024-09-03","TemperatureC":40,"Summary":"Chilly","TemperatureF":103,"$type":"WeatherForecast"},{"Date":"2024-09-04","TemperatureC":-4,"Summary":"Chilly","TemperatureF":25,"$type":"WeatherForecast"},{"Date":"2024-09-05","TemperatureC":9,"Summary":"Hot","TemperatureF":48,"$type":"WeatherForecast"}]
+2024-08-31 21:07:46.591 +10:00 [INF] HTTP GET /weatherforecast/ responded 200 in 34.9190 ms
+2024-08-31 21:07:49.815 +10:00 [INF] HTTP GET /weatherforecast/ responded 307 in 0.0887 ms
+2024-08-31 21:07:49.817 +10:00 [INF] Got request at {DateTimeOffset.Now}
+2024-08-31 21:07:49.817 +10:00 [INF] Got request at "2024-08-31T21:07:49.8174684+10:00" for forecast: [{"Date":"2024-09-01","TemperatureC":-5,"Summary":"Bracing","TemperatureF":24,"$type":"WeatherForecast"},{"Date":"2024-09-02","TemperatureC":30,"Summary":"Warm","TemperatureF":85,"$type":"WeatherForecast"},{"Date":"2024-09-03","TemperatureC":-10,"Summary":"Freezing","TemperatureF":15,"$type":"WeatherForecast"},{"Date":"2024-09-04","TemperatureC":33,"Summary":"Freezing","TemperatureF":91,"$type":"WeatherForecast"},{"Date":"2024-09-05","TemperatureC":42,"Summary":"Sweltering","TemperatureF":107,"$type":"WeatherForecast"}]
+2024-08-31 21:07:49.818 +10:00 [INF] HTTP GET /weatherforecast/ responded 200 in 1.0975 ms
