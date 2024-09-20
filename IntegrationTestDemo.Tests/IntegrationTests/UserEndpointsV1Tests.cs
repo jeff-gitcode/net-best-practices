@@ -1,5 +1,6 @@
 using AutoFixture.Xunit2;
 using IntegrationTestDemo.User;
+using Microsoft.EntityFrameworkCore;
 using RichardSzalay.MockHttp;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -45,7 +46,7 @@ public class UserEndpointsV1Tests : IClassFixture<IntegrationTestWebApplicationF
     }
 
     [Theory, AutoData]
-    public async Task AddUsers(List<UserEntity> expected)
+    public async Task AddUsers(UserEntity expected)
     {
         var options = new JsonSerializerOptions
         {
@@ -55,25 +56,21 @@ public class UserEndpointsV1Tests : IClassFixture<IntegrationTestWebApplicationF
 
         var url = "https://jsonplaceholder.typicode.com/users";
 
-        _factory.MockHttpHandler.When(url).RespondJson<List<UserEntity>>(expected);
+        _factory.MockHttpHandler.When(url).RespondJson<UserEntity>(expected);
 
-        var user = new UserEntity
-        {
-            Name = "Test Name",
-            Email = "email"
-        };
-
-        var response = await _httpClient.PostAsJsonAsync("/useritems/v1", user);
+        var response = await _httpClient.PostAsJsonAsync("/useritems/v1", expected);
 
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadAsStringAsync();
 
-        var jsonContent = await response.Content.ReadFromJsonAsync<List<UserEntity>>();
+        var jsonContent = await response.Content.ReadFromJsonAsync<UserEntity>();
 
-        var actual = JsonSerializer.Deserialize<List<UserEntity>>(content, options);
+        var actual = JsonSerializer.Deserialize<UserEntity>(content, options);
 
         Assert.Equivalent(expected, actual);
+
+        Assert.Equal(2, await _factory.GetContext().Users.CountAsync());
     }
 
 }

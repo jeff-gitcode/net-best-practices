@@ -1,6 +1,8 @@
+using IntegrationTestDemo.User;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +19,10 @@ namespace IntegrationTestDemo.Tests.IntegrationTests;
 public class IntegrationTestWebApplicationFactory<TProgram>
     : WebApplicationFactory<TProgram> where TProgram : class
 {
+    private UserDbContext _userDbContext;
+    private IDataSeedService _dataSeedService;
+    private IServiceProvider _serviceProvider;
+
     public MockHttpMessageHandler MockHttpHandler { get; set; }
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
@@ -51,19 +57,21 @@ public class IntegrationTestWebApplicationFactory<TProgram>
     {
         builder.ConfigureServices(services =>
         {
-            //var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<TodoDbContext>));
+            var descriptor = services.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<UserDbContext>));
 
-            //if (descriptor != null)
-            //{
-            //    services.Remove(descriptor);
-            //}
+            if (descriptor != null)
+            {
+                services.Remove(descriptor);
+            }
 
-            //services.AddDbContext<TodoDbContext>(options =>
-            //{
-            //    //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            //    //options.UseSqlite($"Data Source={Path.Join(path, "WebMinRouteGroup_tests.db")}");
-            //    options.UseInMemoryDatabase($"InMemoryTestDb-{DateTime.Now.ToFileTimeUtc()}");
-            //});
+            services.AddDbContext<UserDbContext>(options =>
+            {
+                //var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                //options.UseSqlite($"Data Source={Path.Join(path, "WebMinRouteGroup_tests.db")}");
+                options.UseInMemoryDatabase($"InMemoryTestDb-{DateTime.Now.ToFileTimeUtc()}");
+            });
+
+            services.AddTransient<IDataSeedService, DataSeedService>();
 
             //services.Replace(ServiceDescriptor.Scoped(_ =>
             //{
@@ -71,11 +79,36 @@ public class IntegrationTestWebApplicationFactory<TProgram>
             //    providerMock.Setup(x => x.GetData()).Returns(new XData { Attr1 = "Val1", Attr2 = "Val2" });
             //    return providerMock.Object;
             //}));
+
+            _serviceProvider = services.BuildServiceProvider();
+            _userDbContext = _serviceProvider.GetRequiredService<UserDbContext>();
+            _dataSeedService = _serviceProvider.GetRequiredService<IDataSeedService>();
+
+            _dataSeedService.SeedDataAsync().Wait();
+
+            // UserDb = sp.serv
+            //using (var scope = sp.CreateScope())
+            //using (var appContext = scope.ServiceProvider.GetRequiredService<TodoDbContext>())
+            //{
+            //    try
+            //    {
+            //        appContext.Database.EnsureCreated();
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        //Log errors or do anything you think it's needed
+            //        throw;
+            //    }
+            //}
         });
 
 
         return base.CreateHost(builder);
     }
+
+    public UserDbContext GetContext() => _userDbContext;
+
+    public T GetService<T>() => _serviceProvider.GetRequiredService<T>();
 }
 
 public static class MockHttpClientBunitHelpers
